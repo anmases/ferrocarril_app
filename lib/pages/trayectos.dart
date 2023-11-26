@@ -37,8 +37,6 @@ class _TrayectosViewState extends State<TrayectosView>{
     daoTren.connect();
     daoEstacion.connect();
     dao.connect();
-    daoTren.getStream.first.then((value) => trenes = value);
-    daoEstacion.getStream.first.then((value) => estaciones = value);
   }
 
 
@@ -124,8 +122,9 @@ class _TrayectosViewState extends State<TrayectosView>{
 
   @override
   Widget build(BuildContext context) {
-    dao.getStream.first.then((value) =>
-        setState(()=> num = value.length));
+    dao.getStream.first.then((value) => setState(()=> num = value.length));
+    daoTren.getStream.first.then((value) => setState(()=>trenes = value));
+    daoEstacion.getStream.first.then((value) => setState(()=>estaciones = value));
     return SingleChildScrollView(child:
     Column(children: [
       //panel superior:

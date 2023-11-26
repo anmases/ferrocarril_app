@@ -38,8 +38,6 @@ class _MantenimientosViewState extends State<MantenimientosView>{
     dao.connect();
     daoTren.connect();
     daoEmpleado.connect();
-    daoTren.getStream.first.then((value) => trenes = value);
-    daoEmpleado.getStream.first.then((value) => empleados = value);
   }
 
 
@@ -125,8 +123,9 @@ class _MantenimientosViewState extends State<MantenimientosView>{
 
   @override
   Widget build(BuildContext context) {
-    dao.getStream.first.then((value) =>
-        setState(()=> num = value.length));
+    dao.getStream.first.then((value) => setState(()=> num = value.length));
+    daoTren.getStream.first.then((value) => setState(()=>trenes = value));
+    daoEmpleado.getStream.first.then((value) => setState(()=>empleados = value));
     return SingleChildScrollView(child:
     Column(children: [
       //panel superior:
@@ -233,6 +232,8 @@ class _MantenimientosViewState extends State<MantenimientosView>{
                     inicioController.clear();
                     finController.clear();
                     descripcionController.clear();
+                    tren = null;
+                    empleado = null;
                   },
                   child: const Text('Enviar'),
                 ),

@@ -37,7 +37,6 @@ class _EmpleadosViewState extends State<EmpleadosView>{
     daoEstacion.setAction("get", "estacion", {});
     dao.connect();
     daoEstacion.connect();
-    daoEstacion.getStream.first.then((value) => estaciones = value);
   }
 
 
@@ -107,8 +106,8 @@ class _EmpleadosViewState extends State<EmpleadosView>{
 
   @override
   Widget build(BuildContext context) {
-    dao.getStream.first.then((value) =>
-        setState(()=> num = value.length));
+    dao.getStream.first.then((value) => setState(()=> num = value.length));
+    daoEstacion.getStream.first.then((value) => setState(()=>estaciones = value));
     return SingleChildScrollView(child:
     Column(children: [
       //panel superior:

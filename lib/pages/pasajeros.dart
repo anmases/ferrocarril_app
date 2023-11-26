@@ -35,7 +35,6 @@ class _PasajerosViewState extends State<PasajerosView>{
     daoTrayecto.setAction("get", "trayecto", {});
     daoTrayecto.connect();
     dao.connect();
-    daoTrayecto.getStream.first.then((value) => trayectos = value);
   }
 
 
@@ -101,8 +100,8 @@ class _PasajerosViewState extends State<PasajerosView>{
 
   @override
   Widget build(BuildContext context) {
-    dao.getStream.first.then((value) =>
-        setState(()=> num = value.length));
+    dao.getStream.first.then((value) => setState(()=> num = value.length));
+    daoTrayecto.getStream.first.then((value) => setState(()=>trayectos = value));
     return SingleChildScrollView(child:
     Column(children: [
       //panel superior:

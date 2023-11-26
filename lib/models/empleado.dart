@@ -14,7 +14,6 @@ class Empleado extends Serializable<Empleado>{
 
   @override
   Empleado fromJson(Map<String, dynamic> obj) {
-    print(obj["estacion"]);
     Estacion estacion = Estacion(0, "", "");
     Empleado empleado = Empleado(0, "", "", "", estacion);
     empleado.id = obj["id"];
