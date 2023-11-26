@@ -203,6 +203,7 @@ class _EmpleadosViewState extends State<EmpleadosView>{
                     nombreController.clear();
                     puestoController.clear();
                     contratadoController.clear();
+                    estacion = null;
                   },
                   child: const Text('Enviar'),
                 ),

@@ -31,11 +31,12 @@ class Dao<T extends Serializable<T>>{
       onDataReceived(data);
     },
         onDone: ()=>print("El servidor ha cerrado la conexión"),
-        onError: (error)=>print(error)
+        onError: (error)=>print("Error $error")
     );
   }
 
   void onDataReceived(String data){
+    print(data);
     final Map<String, dynamic> json = jsonDecode(data);
     items.add(entity.fromJson(json));
     streamController.sink.add(items);

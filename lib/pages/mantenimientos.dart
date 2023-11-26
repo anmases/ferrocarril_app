@@ -35,9 +35,9 @@ class _MantenimientosViewState extends State<MantenimientosView>{
     daoTren.setAction("get", "tren", {});
     daoEmpleado.setAction("get", "empleado", {});
     dao.setAction("get", "mantenimiento", {});
+    dao.connect();
     daoTren.connect();
     daoEmpleado.connect();
-    dao.connect();
     daoTren.getStream.first.then((value) => trenes = value);
     daoEmpleado.getStream.first.then((value) => empleados = value);
   }
@@ -87,7 +87,7 @@ class _MantenimientosViewState extends State<MantenimientosView>{
     for(var item in lista){
       items.add(DropdownMenuItem<Empleado>(
           value: item,
-          child: Text("${item.nombre}")
+          child: Text(item.nombre)
       ));
     }
     return items;
